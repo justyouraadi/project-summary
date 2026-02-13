@@ -1,0 +1,9 @@
+flask
+flask-socketio
+eventlet
+flask-cors
+openai-whisper
+torch
+numpy
+soundfile
+gunicorn
