@@ -3,7 +3,11 @@ flask-socketio
 eventlet
 flask-cors
 openai-whisper
-torch
-numpy
+torch==2.1.2
+torchaudio==2.1.2
+numpy==1.26.4
 soundfile
+pyannote.audio==3.1.1
+transformers==4.40.2
+huggingface-hub
 gunicorn
