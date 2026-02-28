@@ -4,7 +4,10 @@ from flask_socketio import SocketIO, join_room
 from flask_cors import CORS
 from ai_service import process_audio
 
-app = Flask(__name__, static_folder="../frontend")
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+FRONTEND_FOLDER = os.path.join(BASE_DIR, "frontend")
+
+app = Flask(__name__, static_folder=FRONTEND_FOLDER)
 CORS(app)
 
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -19,7 +22,7 @@ print("🚀 Virtual Court Server Starting...")
 # =========================
 @app.route("/")
 def serve_frontend():
-    return send_from_directory("../frontend", "meeting.html")
+    return send_from_directory(FRONTEND_FOLDER, "meeting.html")
 
 # =========================
 # Socket Events
