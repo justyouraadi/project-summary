@@ -16,7 +16,7 @@ print("✅ Whisper loaded")
 print("🔄 Loading Speaker Diarization model...")
 pipeline = Pipeline.from_pretrained(
     "pyannote/speaker-diarization-3.1",
-    use_auth_token="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"
+    use_auth_token="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"
 )
 
 pipeline.to(torch.device(device))
