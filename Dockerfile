@@ -1,18 +1,14 @@
-FROM python:3.11-slim
+FROM python:3.11
 
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    && rm -rf /var/lib/apts/lists/*
+RUN apt-get update && apt-get install -y ffmpeg
 
 WORKDIR /app
 
-COPY requirements.txt /app
-COPY app.py /app
-COPY socket_events.py /app
-COPY ai_service.py /app
-
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
 
 EXPOSE 3046
 
-CMD ["gunicorn","-w","4","-b","0.0.0.0:3046","app:app"]
+CMD ["gunicorn", "-k", "eventlet", "-w", "1", "-b", "0.0.0.0:3046", "app:app"]
